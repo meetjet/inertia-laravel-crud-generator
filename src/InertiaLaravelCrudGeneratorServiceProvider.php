@@ -3,6 +3,7 @@
 namespace Wpseed\InertiaLaravelCrudGenerator;
 
 use Illuminate\Support\ServiceProvider;
+use Wpseed\InertiaLaravelCrudGenerator\Commands\MakeInertiaCrudCommand;
 
 class InertiaLaravelCrudGeneratorServiceProvider extends ServiceProvider
 {
@@ -61,22 +62,12 @@ class InertiaLaravelCrudGeneratorServiceProvider extends ServiceProvider
             __DIR__.'/../config/inertia-laravel-crud-generator.php' => config_path('inertia-laravel-crud-generator.php'),
         ], 'inertia-laravel-crud-generator.config');
 
-        // Publishing the views.
-        /*$this->publishes([
-            __DIR__.'/../resources/views' => base_path('resources/views/vendor/wpseed'),
-        ], 'inertia-laravel-crud-generator.views');*/
-
-        // Publishing assets.
-        /*$this->publishes([
-            __DIR__.'/../resources/assets' => public_path('vendor/wpseed'),
-        ], 'inertia-laravel-crud-generator.views');*/
-
         // Publishing the translation files.
         /*$this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/wpseed'),
         ], 'inertia-laravel-crud-generator.views');*/
 
         // Registering package commands.
-        // $this->commands([]);
+        $this->commands([MakeInertiaCrudCommand::class]);
     }
 }

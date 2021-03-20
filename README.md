@@ -1,11 +1,13 @@
-# InertiaLaravelCrudGenerator
+# Inertia Laravel CRUD Generator
+
+![](https://banners.beyondco.de/Inertia%20Laravel%20CRUD%20Generator.png?theme=light&packageManager=composer+require&packageName=wpseed%2Finertia-laravel-crud-generator&pattern=brickWall&style=style_1&description=CRUD+Generator+for+Inertia+Laravel+Stack&md=1&showWatermark=0&fontSize=100px&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg)
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 [![Build Status][ico-travis]][link-travis]
 [![StyleCI][ico-styleci]][link-styleci]
 
-This is where your description should go. Take a look at [contributing.md](contributing.md) to see a to do list.
+CRUD Generator for Inertia Laravel Stack. Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
 
@@ -16,6 +18,7 @@ $ composer require wpseed/inertia-laravel-crud-generator
 ```
 
 ## Usage
+
 
 ## Change log
 

@@ -10,7 +10,7 @@
         }
     ],
     "homepage": "https://github.com/wpseed/inertia-laravel-crud-generator",
-    "keywords": ["Laravel", "Inertia"],
+    "keywords": ["inertia", "laravel", "crud", "generator"],
     "require": {
         "illuminate/support": "~7|~8"
     },

@@ -44,7 +44,7 @@ If you discover any security related issues, please email author email instead o
 
 ## Credits
 
-- [author name][link-author]
+- [Zorca Orcinus][https://zorca.dev]
 - [All Contributors][link-contributors]
 
 ## License

@@ -163,7 +163,7 @@ class MakeInertiaCrudCommand extends Command
         $baseInertiaPagePath = resource_path(
             (string) Str::of($model)->prepend('js/Pages/'),
         );
-        $indexInertiaPagePath = "{$baseInertiaPagePath}/List.vue";
+        $indexInertiaPagePath = "{$baseInertiaPagePath}/Index.vue";
         $showInertiaPagePath = "{$baseInertiaPagePath}/Show.vue";
         $createInertiaPagePath = "{$baseInertiaPagePath}/Create.vue";
         $editInertiaPagePath = "{$baseInertiaPagePath}/Edit.vue";
@@ -185,6 +185,13 @@ class MakeInertiaCrudCommand extends Command
             'models' => $pluralModel,
             'controller' => $controller,
             'controllerClass' => $controllerClass,
+            'entity' => Str::lower($model),
+            'entities' => (string) Str::of(Str::lower($model))->plural(),
+        ]);
+
+        $this->copyStubToAppVue('Index', $indexInertiaPagePath, [
+            'model' => $model,
+            'models' => $pluralModel,
             'entity' => Str::lower($model),
             'entities' => (string) Str::of(Str::lower($model))->plural(),
         ]);

@@ -1,6 +1,6 @@
 {
     "name": "wpseed/inertia-laravel-crud-generator",
-    "description": "Laravel Inertia CRUD Generator",
+    "description": "Inertia Laravel CRUD Generator",
     "license": "MIT",
     "authors": [
         {

@@ -141,6 +141,7 @@ class MakeInertiaCrudCommand extends Command
             ->trim(' ')
             ->studly()
             ->replace('/', '\\');
+        $pluralModel = (string) Str::of($model)->pluralStudly();
         $modelClass = (string) Str::of($model)->afterLast('\\');
         $modelNamespace = Str::of($model)->contains('\\') ?
             (string) Str::of($model)->beforeLast('\\') :
@@ -174,15 +175,12 @@ class MakeInertiaCrudCommand extends Command
         }
 
         $this->copyStubToApp('Controller', $controllerPath, [
-            'namespace' => 'App\\Filament\\Resources' . ($resourceNamespace !== '' ? "\\{$resourceNamespace}" : ''),
+            'namespace' => 'App\\Http\\InertiaControllers' . ($modelNamespace !== '' ? "\\{$modelNamespace}" : ''),
+            'model' => $pluralModel,
             'controller' => $controller,
             'controllerClass' => $controllerClass,
-        ]);
-
-        $this->copyStubToApp('Resource', $controllerPath, [
-            'indexInertiaPage' => $indexResourcePageClass,
-            'createInertiaPage' => $createResourcePageClass,
-            'editInertiaPage' => $editResourcePageClass,
+            'entity' => Str::lower($model),
+            'entities' => (string) Str::of(Str::lower($model))->plural(),
         ]);
 
         $this->info("Successfully created {$model} Inertia CRUD!");

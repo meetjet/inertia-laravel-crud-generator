@@ -4,6 +4,7 @@ namespace Wpseed\InertiaLaravelCrudGenerator\Commands\Concerns;
 
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 trait CanManipulateFiles {
 
@@ -43,19 +44,14 @@ trait CanManipulateFiles {
     {
         $filesystem = new Filesystem();
 
-        $stubPath = __DIR__ . "/stubs/{$stub}.stub";
+        $stubPath = __DIR__ . "/../stubs/{$stub}.stub";
 
-        try {
-            $stub = Str::of($filesystem->get($stubPath));
-        } catch (FileNotFoundException $e) {
-        }
+        $stub = Str::of($filesystem->get($stubPath));
 
         foreach ($replacements as $key => $replacement) {
             $stub = $stub->replace("{{ {$key} }}", $replacement);
         }
 
-        $stub = (string) $stub;
-
-        $this->writeFile($targetPath, $stub);
+        $this->writeFile($targetPath, (string) $stub);
     }
 }

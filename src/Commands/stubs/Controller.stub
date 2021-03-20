@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
-class {{ class }} extends Controller
+class {{ controllerClass }} extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class {{ class }} extends Controller
      */
     public function index()
     {
-        return Inertia::render('{{ Models }}/Index', [
+        return Inertia::render('{{ models }}/Index', [
                 '{{ entities }}' => ${{ entities }}
             ]);
     }
@@ -39,16 +39,16 @@ class {{ class }} extends Controller
      */
     public function store(Request $request)
     {
-        return Redirect::route('{{ entities }}')->with('success', '{{ Model }} created.');
+        return Redirect::route('{{ entities }}')->with('success', '{{ model }} created.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param {{ Model }} ${{ entity }}
+     * @param {{ model }} ${{ entity }}
      * @return \Inertia\Response
      */
-    public function show({{ Model }} ${{ entity }})
+    public function show({{ model }} ${{ entity }})
     {
         return Inertia::render('{{ Models }}/Show', [
                 '{{ entity }}' => ${{ entity }}
@@ -58,10 +58,10 @@ class {{ class }} extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param {{ Model }} ${{ entity }}
+     * @param {{ model }} ${{ entity }}
      * @return \Inertia\Response
      */
-    public function edit({{ Model }} ${{ entity }})
+    public function edit({{ model }} ${{ entity }})
     {
         return Inertia::render('{{ Models }}/Edit', [
                 '{{ entity }}' => ${{ entity }}
@@ -72,22 +72,22 @@ class {{ class }} extends Controller
      * Update the specified resource in storage.
      *
      * @param Request $request
-     * @param {{ Model }} ${{ entity }}
+     * @param {{ model }} ${{ entity }}
      * @return Redirect
      */
     public function update(Request $request, $id)
     {
-        return Redirect::back()->with('success', '{{ Model }} updated.');
+        return Redirect::back()->with('success', '{{ model }} updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param {{ Model }} ${{ entity }}
+     * @param {{ model }} ${{ entity }}
      * @return Redirect
      */
-    public function destroy( {{ Model }} ${{ entity }})
+    public function destroy( {{ model }} ${{ entity }})
     {
-        return Redirect::back()->with('success', '{{ Model }} restored.');
+        return Redirect::back()->with('success', '{{ model }} restored.');
     }
 }

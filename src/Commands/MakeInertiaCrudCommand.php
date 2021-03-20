@@ -161,7 +161,7 @@ class MakeInertiaCrudCommand extends Command
         $controllerPath = "{$baseControllerPath}.php";
 
         $baseInertiaPagePath = resource_path(
-            (string) Str::of($model)->prepend('js/Pages/'),
+            (string) Str::of($pluralModel)->prepend('js/Pages/'),
         );
         $indexInertiaPagePath = "{$baseInertiaPagePath}/Index.vue";
         $showInertiaPagePath = "{$baseInertiaPagePath}/Show.vue";

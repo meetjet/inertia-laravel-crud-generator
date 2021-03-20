@@ -10,8 +10,7 @@
           <text-input v-model="form.name" :error="form.errors.title" class="pr-6 pb-8 w-full lg:w-1/2" label="Title" />
         </div>
         <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex justify-end items-center">
-          <button type="submit" :disabled="form.processing" class="flex items-center btn-indigo">
-            <div v-if="form.processing" class="btn-spinner mr-2" />
+          <button type="submit" :disabled="form.processing" class="flex items-center px-6 py-3 rounded bg-indigo-600 text-white text-sm leading-4 font-bold whitespace-nowrap hover:bg-orange-400 focus:bg-orange-400">
             Create @{{ model }}
           </button>
         </div>
@@ -22,17 +21,9 @@
 
 <script>
 import Layout from '@/Shared/Layout'
-import TextInput from '@/Shared/TextInput'
-import SelectInput from '@/Shared/SelectInput'
-import LoadingButton from '@/Shared/LoadingButton'
 
 export default {
   metaInfo: { title: 'Create @{{ model }}' },
-  components: {
-    LoadingButton,
-    SelectInput,
-    TextInput,
-  },
   layout: Layout,
   remember: 'form',
   data() {

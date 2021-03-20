@@ -2,7 +2,7 @@
   <div>
     <h1 class="mb-8 font-bold text-3xl">@{{ models }}</h1>
     <div class="mb-6 flex justify-between items-center">
-      <inertia-link class="btn-indigo" :href="route('@{{ entities }}.create')">
+      <inertia-link class="px-6 py-3 rounded bg-indigo-600 text-white text-sm leading-4 font-bold whitespace-nowrap hover:bg-orange-400 focus:bg-orange-400" :href="route('@{{ entities }}.create')">
         <span>Create</span>
         <span class="hidden md:inline">@{{ model }}</span>
       </inertia-link>
@@ -25,11 +25,11 @@
         </tr>
       </table>
     </div>
-    <div v-if="links.length > 3">
+    <div v-if="@{{ entities }}.links.length > 3">
       <div class="flex flex-wrap -mb-1">
         <template v-for="(link, key) in @{{ entities }}.links">
           <div v-if="link.url === null" :key="key" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded" v-html="link.label" />
-          <inertia-link v-else :key="key" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500" :class="{ 'bg-white': link.active }" :href="link.url" v-html="link.label" />
+          <inertia-link v-else class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500" :class="{ 'bg-white': link.active }" :href="link.url" v-html="link.label" />
         </template>
       </div>
     </div>

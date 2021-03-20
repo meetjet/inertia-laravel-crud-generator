@@ -1,0 +1,65 @@
+<template>
+    <div>
+        <h1 class="mb-8 font-bold text-3xl">
+            <inertia-link class="text-indigo-400 hover:text-indigo-600" :href="route('@{{ entity }}s')">@{{ models }}</inertia-link>
+            <span class="text-indigo-400 font-medium"> / </span>{{ form.title }}
+        </h1>
+        <trashed-message v-if="@{{ entity }}.deleted_at" class="mb-6" @restore="restore">
+            This @{{ entity }} has been deleted.
+        </trashed-message>
+        <div class="bg-white rounded-md shadow overflow-hidden max-w-3xl">
+            <form @submit.prevent="update">
+                <div class="p-8 -mr-6 -mb-8 flex flex-wrap">
+                    <div>
+                        <label class="form-label" for="text-input-title">Title:</label>
+                        <input v-model="form.title" id="text-input-title" ref="input" class="form-input" type="text" />
+                    </div>
+                </div>
+                <div class="px-8 py-4 bg-gray-50 border-t border-gray-100 flex items-center">
+                    <button v-if="!@{{ entity }}.deleted_at" class="text-red-600 hover:underline" tabindex="-1" type="button" @click="destroy">Delete @{{ model }}</button>
+                    <button :disabled="loading" class="flex items-center btn-indigo ml-auto" type="submit">
+                      <div v-if="form.processing" class="btn-spinner mr-2" />
+                      Update @{{ model }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<script>
+import Layout from '@/Shared/Layout'
+
+export default {
+    layout: Layout,
+    metaInfo() {
+        return { title: this.form.title }
+    },
+    props: {
+        @{{ entity }}: Object,
+    },
+    remember: 'form',
+    data() {
+        return {
+            form: this.$inertia.form({
+                name: this.@{{ entity }}.title,
+            }),
+        }
+    },
+    methods: {
+        update() {
+            this.form.put(this.route('@{{ entities }}.update', this.@{{ entity }}.id))
+        },
+        destroy() {
+            if (confirm('Are you sure you want to delete this @{{ entity }}?')) {
+                this.$inertia.delete(this.route('@{{ entities }}.destroy', this.@{{ entity }}.id))
+            }
+        },
+        restore() {
+            if (confirm('Are you sure you want to restore this @{{ entity }}?')) {
+                this.$inertia.put(this.route('@{{ entities }}.restore', this.@{{ entity }}.id))
+            }
+        },
+    },
+}
+</script>

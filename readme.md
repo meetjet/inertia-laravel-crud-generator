@@ -5,7 +5,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-CRUD Generator for Inertia Laravel Stack. Take a look at [contributing.md](contributing.md) to see a to do list.
+CRUD Generator for [Inertia Laravel Stack](https://jetstream.laravel.com/1.x/stacks/inertia.html). Take a look at [contributing.md](contributing.md) to see a to do list.
 
 ## Installation
 
@@ -17,7 +17,7 @@ $ composer require wpseed/inertia-laravel-crud-generator
 
 ## Usage
 
-Generate new CRUD for Page model
+Generate new Inertia Laravel CRUD for Page model
 
 ``` bash
 $ php artisan make:inertia:crud Page

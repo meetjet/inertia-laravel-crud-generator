@@ -2,7 +2,8 @@
 
 namespace {{ namespace }};
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use {{ rootNamespace }}\Models\{{ model }};
+use {{ rootNamespace }}\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -14,10 +15,10 @@ class {{ controllerClass }} extends Controller
      *
      * @return \Inertia\Response
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         return Inertia::render('{{ models }}/Index', [
-                '{{ entities }}' => ${{ entities }}
+                '{{ entities }}' => {{ model }}::paginate(10),
             ]);
     }
 
@@ -26,9 +27,9 @@ class {{ controllerClass }} extends Controller
      *
      * @return \Inertia\Response
      */
-    public function create()
+    public function create(): \Inertia\Response
     {
-        //
+        return Inertia::render('{{ models }}/Create');
     }
 
     /**
@@ -37,7 +38,7 @@ class {{ controllerClass }} extends Controller
      * @param  Request  $request
      * @return Redirect
      */
-    public function store(Request $request)
+    public function store(Request $request): Redirect
     {
         return Redirect::route('{{ entities }}')->with('success', '{{ model }} created.');
     }
@@ -48,9 +49,9 @@ class {{ controllerClass }} extends Controller
      * @param {{ model }} ${{ entity }}
      * @return \Inertia\Response
      */
-    public function show({{ model }} ${{ entity }})
+    public function show({{ model }} ${{ entity }}): \Inertia\Response
     {
-        return Inertia::render('{{ Models }}/Show', [
+        return Inertia::render('{{ models }}/Show', [
                 '{{ entity }}' => ${{ entity }}
             ]);
     }
@@ -61,9 +62,9 @@ class {{ controllerClass }} extends Controller
      * @param {{ model }} ${{ entity }}
      * @return \Inertia\Response
      */
-    public function edit({{ model }} ${{ entity }})
+    public function edit({{ model }} ${{ entity }}): \Inertia\Response
     {
-        return Inertia::render('{{ Models }}/Edit', [
+        return Inertia::render('{{ models }}/Edit', [
                 '{{ entity }}' => ${{ entity }}
             ]);
     }
@@ -75,7 +76,7 @@ class {{ controllerClass }} extends Controller
      * @param {{ model }} ${{ entity }}
      * @return Redirect
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, {{ model }} ${{ entity }}): Redirect
     {
         return Redirect::back()->with('success', '{{ model }} updated.');
     }
@@ -86,8 +87,21 @@ class {{ controllerClass }} extends Controller
      * @param {{ model }} ${{ entity }}
      * @return Redirect
      */
-    public function destroy( {{ model }} ${{ entity }})
+    public function destroy({{ model }} ${{ entity }}): Redirect
     {
+        return Redirect::back()->with('success', '{{ model }} restored.');
+    }
+
+    /**
+     * Restore the specified resource.
+     *
+     * @param {{ model }} ${{ entity }}
+     * @return Redirect
+     */
+    public function restore({{ model }} ${{ entity }}): Redirect
+    {
+        ${{ entity }}->restore();
+
         return Redirect::back()->with('success', '{{ model }} restored.');
     }
 }

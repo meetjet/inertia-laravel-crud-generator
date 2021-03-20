@@ -135,6 +135,8 @@ class MakeInertiaCrudCommand extends Command
      */
     public function handle():void
     {
+        $rootNamespace = 'App';
+
         $model = (string) Str::of($this->argument('name'))
             ->trim('/')
             ->trim('\\')
@@ -162,21 +164,25 @@ class MakeInertiaCrudCommand extends Command
             (string) Str::of($model)->prepend('js/Pages/'),
         );
         $indexInertiaPagePath = "{$baseInertiaPagePath}/List.vue";
+        $showInertiaPagePath = "{$baseInertiaPagePath}/Show.vue";
         $createInertiaPagePath = "{$baseInertiaPagePath}/Create.vue";
         $editInertiaPagePath = "{$baseInertiaPagePath}/Edit.vue";
 
         if ($this->checkForCollision([
             $controllerPath,
             $indexInertiaPagePath,
+            $showInertiaPagePath,
             $createInertiaPagePath,
             $editInertiaPagePath,
         ])) {
             return;
         }
 
-        $this->copyStubToApp('Controller', $controllerPath, [
+        $this->copyStubToApp('InertiaController', $controllerPath, [
             'namespace' => 'App\\Http\\InertiaControllers' . ($modelNamespace !== '' ? "\\{$modelNamespace}" : ''),
-            'model' => $pluralModel,
+            'rootNamespace' => $rootNamespace,
+            'model' => $model,
+            'models' => $pluralModel,
             'controller' => $controller,
             'controllerClass' => $controllerClass,
             'entity' => Str::lower($model),

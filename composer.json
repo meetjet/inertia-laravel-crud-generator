@@ -1,16 +1,16 @@
 {
     "name": "wpseed/inertia-laravel-crud-generator",
-    "description": ":package_description",
-    "license": "license",
+    "description": "Laravel Inertia CRUD Generator",
+    "license": "MIT",
     "authors": [
         {
-            "name": "author name",
-            "email": "author email",
-            "homepage": "author homepage"
+            "name": "zorca",
+            "email": "vs@zorca.org",
+            "homepage": "https://zorca.dev"
         }
     ],
     "homepage": "https://github.com/wpseed/inertia-laravel-crud-generator",
-    "keywords": ["Laravel", "InertiaLaravelCrudGenerator"],
+    "keywords": ["Laravel", "Inertia"],
     "require": {
         "illuminate/support": "~7|~8"
     },

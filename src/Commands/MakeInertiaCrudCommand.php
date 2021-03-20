@@ -217,6 +217,6 @@ class MakeInertiaCrudCommand extends Command
             'entities' => (string) Str::of(Str::lower($model))->plural(),
         ]);
 
-        $this->info("Successfully created {$model} Inertia CRUD!");
+        $this->info("Inertia CRUD for {$model} created successfully!");
     }
 }

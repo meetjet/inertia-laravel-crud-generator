@@ -196,6 +196,13 @@ class MakeInertiaCrudCommand extends Command
             'entities' => (string) Str::of(Str::lower($model))->plural(),
         ]);
 
+        $this->copyStubToAppVue('Create', $createInertiaPagePath, [
+            'model' => $model,
+            'models' => $pluralModel,
+            'entity' => Str::lower($model),
+            'entities' => (string) Str::of(Str::lower($model))->plural(),
+        ]);
+
         $this->info("Successfully created {$model} Inertia CRUD!");
     }
 }

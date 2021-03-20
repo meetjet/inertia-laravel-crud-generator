@@ -17,6 +17,12 @@ $ composer require wpseed/inertia-laravel-crud-generator
 
 ## Usage
 
+Generate new CRUD for Page model
+
+``` bash
+$ php artisan make:inertia:crud Page
+```
+
 
 ## Change log
 

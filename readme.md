@@ -12,7 +12,7 @@ CRUD Generator for [Inertia Laravel Stack](https://jetstream.laravel.com/1.x/sta
 Via Composer
 
 ``` bash
-$ composer require wpseed/inertia-laravel-crud-generator
+$ composer require wpseed/inertia-laravel-crud-generator --dev
 ```
 
 ## Usage

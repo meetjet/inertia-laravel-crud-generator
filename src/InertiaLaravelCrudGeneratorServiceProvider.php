@@ -62,6 +62,10 @@ class InertiaLaravelCrudGeneratorServiceProvider extends ServiceProvider
             __DIR__.'/../config/inertia-laravel-crud-generator.php' => config_path('inertia-laravel-crud-generator.php'),
         ], 'inertia-laravel-crud-generator.config');
 
+        $this->publishes([
+            __DIR__.'/../src/Commands/stubs' => resource_path('views/vendor/inertia-laravel-crud-generator/stubs'),
+        ], 'inertia-laravel-crud-generator.stubs');
+
         // Publishing the translation files.
         /*$this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/wpseed'),

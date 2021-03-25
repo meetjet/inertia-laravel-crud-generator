@@ -1,4 +1,4 @@
-.idea
+/.idea
 /testbench
 /vendor
 composer.lock

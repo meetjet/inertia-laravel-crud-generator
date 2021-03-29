@@ -153,9 +153,11 @@ class MakeInertiaCrudCommand extends Command
         $controller = "{$model}Controller";
         $controllerClass = "{$modelClass}Controller";
 
+        $controllerDir = config('inertia-laravel-crud-generator.controllerDir');
+
         $baseControllerPath = app_path(
             (string) Str::of($controller)
-                ->prepend('Http\\InertiaControllers\\')
+                ->prepend("Http\\{$controllerDir}\\")
                 ->replace('\\', '/'),
         );
         $controllerPath = "{$baseControllerPath}.php";
@@ -179,7 +181,7 @@ class MakeInertiaCrudCommand extends Command
         }
 
         $this->copyStubToApp('InertiaController', $controllerPath, [
-            'namespace' => 'App\\Http\\InertiaControllers' . ($modelNamespace !== '' ? "\\{$modelNamespace}" : ''),
+            'namespace' => 'App\\Http\\'. $controllerDir . ($modelNamespace !== '' ? "\\{$modelNamespace}" : ''),
             'rootNamespace' => $rootNamespace,
             'model' => $model,
             'models' => $pluralModel,

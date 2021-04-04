@@ -45,7 +45,7 @@ trait CanManipulateFiles {
         $filesystem = new Filesystem();
 
         $stubPath = __DIR__ . "/../stubs/{$stub}.stub";
-        $appStubPath = resource_path("views/vendor/inertia-laravel-crud-generator/stubs/{$stub}.stub");
+        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/{$stub}.stub");
 
         if ($filesystem->exists($appStubPath)) {
             $stubPath = $appStubPath;
@@ -65,7 +65,7 @@ trait CanManipulateFiles {
         $filesystem = new Filesystem();
 
         $stubPath = __DIR__ . "/../stubs/vue/{$stub}.stub";
-        $appStubPath = resource_path("views/vendor/inertia-laravel-crud-generator/stubs/vue/{$stub}.stub");
+        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/vue/{$stub}.stub");
         if ($filesystem->exists($appStubPath)) {
             $stubPath = $appStubPath;
         }

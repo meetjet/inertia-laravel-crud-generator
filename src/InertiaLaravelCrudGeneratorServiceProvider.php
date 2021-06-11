@@ -4,6 +4,7 @@ namespace Wpseed\InertiaLaravelCrudGenerator;
 
 use Illuminate\Support\ServiceProvider;
 use Wpseed\InertiaLaravelCrudGenerator\Commands\MakeInertiaCrudCommand;
+use Wpseed\InertiaLaravelCrudGenerator\Commands\MakeModuleInertiaCrudCommand;
 
 class InertiaLaravelCrudGeneratorServiceProvider extends ServiceProvider
 {
@@ -73,5 +74,6 @@ class InertiaLaravelCrudGeneratorServiceProvider extends ServiceProvider
 
         // Registering package commands.
         $this->commands([MakeInertiaCrudCommand::class]);
+        $this->commands([MakeModuleInertiaCrudCommand::class]);
     }
 }

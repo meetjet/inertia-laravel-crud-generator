@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <h1 class="mb-8 font-bold text-3xl">@{{ models }}</h1>
+    <div class="mb-6 flex justify-between items-center">
+      <inertia-link class="px-6 py-3 rounded bg-indigo-600 text-white text-sm leading-4 font-bold whitespace-nowrap hover:bg-orange-400 focus:bg-orange-400" :href="route('@{{ entities }}.create')">
+        <span>Create</span>
+        <span class="hidden md:inline">@{{ model }}</span>
+      </inertia-link>
+    </div>
+    <div class="bg-white rounded-md shadow overflow-x-auto">
+      <table class="w-full whitespace-nowrap">
+        <tr class="text-left font-bold">
+          <th class="px-6 pt-6 pb-4">ID</th>
+        </tr>
+        <tr v-for="@{{ entity }} in @{{ entities }}.data" :key="@{{ entity }}.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
+          <td class="border-t">
+            <inertia-link class="px-6 py-4 flex items-center focus:text-indigo-500" :href="route('@{{ entities }}.edit', @{{ entity }}.id)">
+              {{ @{{ entity }}.name }}
+              <icon v-if="@{{ entity }}.deleted_at" name="trash" class="flex-shrink-0 w-3 h-3 fill-gray-400 ml-2" />
+            </inertia-link>
+          </td>
+        </tr>
+        <tr v-if="@{{ entities }}.data.length === 0">
+          <td class="border-t px-6 py-4" colspan="4">No @{{ entities }} found.</td>
+        </tr>
+      </table>
+    </div>
+    <div v-if="@{{ entities }}.links.length > 3">
+      <div class="flex flex-wrap -mb-1">
+        <template v-for="(link, key) in @{{ entities }}.links">
+          <div v-if="link.url === null" :key="key" class="mr-1 mb-1 px-4 py-3 text-sm leading-4 text-gray-400 border rounded" v-html="link.label" />
+          <inertia-link v-else class="mr-1 mb-1 px-4 py-3 text-sm leading-4 border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500" :class="{ 'bg-white': link.active }" :href="link.url" v-html="link.label" />
+        </template>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import Layout from '@/Shared/Layout'
+export default {
+  layout: Layout,
+  metaInfo: { title: '@{{ entities }}' },
+  props: {
+    @{{ entities }}: Object,
+  },
+}
+</script>

@@ -40,12 +40,12 @@ trait CanManipulateFiles {
         $filesystem->put($path, $contents);
     }
 
-    protected function copyStubToApp($stub, $targetPath, $replacements = [])
+    protected function copyStubToApp($stub, $targetPath, $replacements = [], $template = 'default')
     {
         $filesystem = new Filesystem();
 
-        $stubPath = __DIR__ . "/../stubs/{$stub}.stub";
-        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/{$stub}.stub");
+        $stubPath = __DIR__ . "/../stubs/{$template}/{$stub}.stub";
+        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/{$template}/{$stub}.stub");
 
         if ($filesystem->exists($appStubPath)) {
             $stubPath = $appStubPath;
@@ -60,12 +60,12 @@ trait CanManipulateFiles {
         $this->writeFile($targetPath, (string) $stub);
     }
 
-    protected function copyStubToAppVue($stub, $targetPath, $replacements = [])
+    protected function copyStubToAppVue($stub, $targetPath, $replacements = [], $template = 'default')
     {
         $filesystem = new Filesystem();
 
-        $stubPath = __DIR__ . "/../stubs/vue/{$stub}.stub";
-        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/vue/{$stub}.stub");
+        $stubPath = __DIR__ . "/../stubs/{$template}/vue/{$stub}.stub";
+        $appStubPath = resource_path("stubs/vendor/inertia-laravel-crud-generator/{$template}/vue/{$stub}.stub");
         if ($filesystem->exists($appStubPath)) {
             $stubPath = $appStubPath;
         }

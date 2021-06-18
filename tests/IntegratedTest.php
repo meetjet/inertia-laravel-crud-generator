@@ -12,7 +12,8 @@ class IntegratedTest extends TestCase
 
         $this->seeInConsoleOutput('Inertia CRUD for Page created successfully!');
 
-        $this->assertTrue(is_dir(base_path('app/Http/InertiaControllers')));
+        $controllerDir = config('inertia-laravel-crud-generator.controllerDir');
+        $this->assertTrue(is_dir(base_path('app/Http/'.$controllerDir)));
 
         $this->assertTrue(is_dir(base_path('resources/js/Pages/Pages')));
     }
